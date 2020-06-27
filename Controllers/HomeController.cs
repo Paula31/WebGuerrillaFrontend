@@ -21,5 +21,27 @@ namespace WebGuerrillaFrontEnd.Controllers
 
             return View();
         }
+
+        public ActionResult Ranking()
+        {
+            ViewBag.Title = "Ranking";
+
+            return View();
+        }
+
+
+        public ActionResult Batalla()
+        {
+            ViewBag.Title = "Batalla";
+
+            return View();
+        }
+
+        public ActionResult Ajustes()
+        {
+            ViewBag.Title = "Ajustes";
+
+            return View();
+        }
     }
 }

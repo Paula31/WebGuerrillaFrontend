@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Batalla";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h2>Ganaste</h2> @*Hay que cambiarlo por lo que trae de la base *@
+
+    <div>
+        <h3>Tus resultados</h3>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Guerrilla</th>
+                    <th scope="col">Facción</th>
+                    <th scope="col">Petróleo</th>
+                    <th scope="col">Dinero</th>
+                    <th scope="col">Personas</th>
+                    <th scope="col">Unidades</th>
+                </tr>
+            </thead>
+
+            <tr>
+                <td>Guerrilla1</td>
+                <td>MEC</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>Ver más</td>
+            </tr>
+
+            @*<tbody>
+                    @foreach (var item in ViewData.Model)
+
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.personName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.createdAt)
+                            </td>
+                            <td>
+                                <a asp-page="./Ver más">
+                                    @Html.ActionLink("Details", "Details", new { requestId = item.requestId })
+
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>*@
+        </table>
+
+    </div>
+
+    <div>
+        <h3>Resultados del rival</h3>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Guerrilla</th>
+                    <th scope="col">Facción</th>
+                    <th scope="col">Petróleo</th>
+                    <th scope="col">Dinero</th>
+                    <th scope="col">Personas</th>
+                    <th scope="col">Unidades</th>
+                </tr>
+            </thead>
+
+            <tr>
+                <td>Guerrilla1</td>
+                <td>MEC</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>Ver más</td>
+            </tr>
+        </table>
+
+    </div>
+    <div NAME="buttonbar">
+        <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
+    </div>
+</body>
+</html>
+
