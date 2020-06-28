@@ -1,47 +1,46 @@
-﻿
+﻿@using WebGuerrillaFrontEnd.Models;
+@model WebGuerrillaFrontEnd.Models.Guerrilla
 @{
-    ViewBag.Title = "Registrarse";
+	ViewBag.Title = "Registrarse";
 }
 
 <div class="row align-items-center">
 
-        <div class="col-md-8 ">
-            <h2>Registrarse</h2>
+	<div class="col-md-8 ">
+		<h2>Registrarse</h2>
+		@using (Html.BeginForm("Registrarse", "Home", FormMethod.Post))
+		{
 
+			<form>
+				<div class="form-group">
+					<label>Nombre de la guerrilla</label>
+					@Html.TextBoxFor(m => m.GuerrillaName, new { Class = "form-control", Required = "true" })
+				</div>
+				<div class="form-group">
+					<label>Correo</label>
+					@Html.TextBoxFor(m => m.Email, new { Class = "form-control", Required = "true", type = "email" })
+				</div>
+				<div class="form-group">
+					<label for="sel1">Perfil a unirse</label>
+					@Html.DropDownListFor(model => model.Faction, new List<SelectListItem>{ new SelectListItem{Text="China", Value="China" },
+	 new SelectListItem{Text="USMC", Value="USMC"}, new SelectListItem { Text = "MEC", Value = "MEC" }}, "Seleccione una opción", new { @Class = "form-control", @Required = "true" })
+				</div>
+				<div class="form-group">
+					<button class="btn btn-default">Registrarse</button>
+				</div>
+				<div NAME="buttonbar">
+					<INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
+				</div>
 
-            <form>
-                <div class="form-group">
-                    <label>Nombre de la guerrilla</label>
-                    <input class="form-control" type="text" name="email" value="" required />
-                </div>
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input class="form-control" type="password" name="pass" value="" required />
-                </div>
-                <div class="form-group">
-                    
-                    <label for="sel1">Equipo</label>
-                    <select class="form-control" id="sel1">
-                        <option>China</option>
-                        <option>USMC</option>
-                        <option>MEC</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default">Registrarse</button>
-                </div>
-                <div NAME="buttonbar">
-                    <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
-                </div>
+			</form>
+		}
+	</div>
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
 
-            </form>
-
-        </div>
-        <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-
-    </div>
+	</div>
 </div>
+
 
 
