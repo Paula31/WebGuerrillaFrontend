@@ -22,14 +22,6 @@ namespace WebGuerrillaFrontEnd.Controllers
             return View();
         }
 
-        public ActionResult Ranking()
-        {
-            ViewBag.Title = "Ranking";
-
-            return View();
-        }
-
-
         public ActionResult Batalla()
         {
             ViewBag.Title = "Batalla";
@@ -40,6 +32,21 @@ namespace WebGuerrillaFrontEnd.Controllers
         public ActionResult Ajustes()
         {
             ViewBag.Title = "Ajustes";
+
+            return View();
+        }
+
+        public ActionResult Ranking()
+        {
+            ViewBag.Title = "Ranking";
+
+            return View();
+        }
+
+       
+            public ActionResult Perfil()
+        {
+            ViewBag.Title = "Perfil";
 
             return View();
         }

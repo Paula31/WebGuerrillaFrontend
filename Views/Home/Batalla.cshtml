@@ -1,95 +1,146 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Batalla";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <h2>Ganaste</h2> @*Hay que cambiarlo por lo que trae de la base *@
-
-    <div>
-        <h3>Tus resultados</h3>
-        <table class="table table-hover table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Guerrilla</th>
-                    <th scope="col">Facción</th>
-                    <th scope="col">Petróleo</th>
-                    <th scope="col">Dinero</th>
-                    <th scope="col">Personas</th>
-                    <th scope="col">Unidades</th>
-                </tr>
-            </thead>
-
-            <tr>
-                <td>Guerrilla1</td>
-                <td>MEC</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>Ver más</td>
-            </tr>
-
-            @*<tbody>
-                    @foreach (var item in ViewData.Model)
-
-                    {
+    <div class="row align-items-center">
+        <h2>Ganaste</h2> @*Hay que cambiarlo por lo que trae de la base *@
+        <div style="padding: 10px; float: left; width: 45%; text-align: justify;">
+            <div>
+                <h4>Recursos sobrevivientes</h4>
+                <table class="table table-hover table-dark">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.personName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.createdAt)
-                            </td>
-                            <td>
-                                <a asp-page="./Ver más">
-                                    @Html.ActionLink("Details", "Details", new { requestId = item.requestId })
-
-                                </a>
-                            </td>
+                            <th scope="col">Guerrilla</th>
+                            <th scope="col">Facción</th>
+                            <th scope="col">Petróleo</th>
+                            <th scope="col">Dinero</th>
+                            <th scope="col">Personas</th>
                         </tr>
-                    }
+                    </thead>
+
+                    <tr>
+                        <td>Guerrilla1</td>
+                        <td>MEC</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+
+                    </tr>
+
+                    @*<tbody>
+                        @foreach (var item in ViewData.Model)
+
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.personName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdAt)
+                                </td>
+                                <td>
+                                    <a asp-page="./Ver más">
+                                        @Html.ActionLink("Details", "Details", new { requestId = item.requestId })
+
+                                    </a>
+                                </td>
+                            </tr>
+                        }
 
 
-                </tbody>*@
-        </table>
+                    </tbody>*@
+                </table>
 
-    </div>
+            </div>
+            <div>
+                <h4>Unidades robadas</h4>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Asaltos</th>
+                            <th scope="col">Ingenieros</th>
+                            <th scope="col">Tanques</th>
+                        </tr>
+                    </thead>
 
-    <div>
-        <h3>Resultados del rival</h3>
-        <table class="table table-hover table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Guerrilla</th>
-                    <th scope="col">Facción</th>
-                    <th scope="col">Petróleo</th>
-                    <th scope="col">Dinero</th>
-                    <th scope="col">Personas</th>
-                    <th scope="col">Unidades</th>
-                </tr>
-            </thead>
+                    <tr>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-            <tr>
-                <td>Guerrilla1</td>
-                <td>MEC</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>Ver más</td>
-            </tr>
-        </table>
+        <div style="padding: 10px; float: right; width: 45%; text-align: justify;">
+            <div>
+                <h4>Datos del rival</h4>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Guerrilla</th>
+                            <th scope="col">Facción</th>
+                            <th scope="col">Petróleo</th>
+                            <th scope="col">Dinero</th>
+                            <th scope="col">Personas</th>
+                        </tr>
+                    </thead>
 
+                    <tr>
+                        <td>Guerrilla1</td>
+                        <td>MEC</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+
+                    </tr>
+
+                    @*<tbody>
+                        @foreach (var item in ViewData.Model)
+
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.personName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdAt)
+                                </td>
+                                <td>
+                                    <a asp-page="./Ver más">
+                                        @Html.ActionLink("Details", "Details", new { requestId = item.requestId })
+
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>*@
+                </table>
+            </div>
+            <div>
+                <h4>Unidades perdidas</h4>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Asaltos</th>
+                            <th scope="col">Ingenieros</th>
+                            <th scope="col">Tanques</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
     <div NAME="buttonbar">
         <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
     </div>
-</body>
-</html>
 

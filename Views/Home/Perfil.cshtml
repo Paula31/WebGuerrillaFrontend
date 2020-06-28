@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+}
+
+<div class="row align-items-center">
+
+    <div class="col-md-8 ">
+        <h2>Mi Perfil</h2>
+
+        
+        <div style="padding: 10px; float: left; width: 45%; text-align: justify;">
+            <form>
+                <h4>Compra de unidades</h4>
+                <div class="form-group">
+                    <label>Bunker</label>
+                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="bunker" value="" required />
+                </div>
+                <div class="form-group">
+                    <label>Unidades de Asalto</label>
+                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
+                </div>
+                <div class="form-group">
+                    <label>Trincheras</label>
+                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
+                </div>
+                <div class="form-group">
+                    <label>Tanques de Guerra</label>
+                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
+                </div>
+                <div class="form-group">
+                    <label>Ingenieros</label>
+                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default">Comprar</button>
+                </div>
+                <div NAME="buttonbar">
+                    <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" oConClick="history.back()">
+                </div>
+
+            </form>
+        </div>
+
+        <div style="padding: 10px; float: right; width: 45%; text-align: justify;">
+            <h4>Mis recursos</h4>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Guerrilla</th>
+                        <th scope="col">Facción</th>
+                        <th scope="col">Petróleo</th>
+                        <th scope="col">Dinero</th>
+                        <th scope="col">Personas</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>Guerrilla1</td>
+                    <td>MEC</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+  
+</div>
+
+
+
+
