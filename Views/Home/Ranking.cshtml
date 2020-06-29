@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Ranking";
+﻿@using WebGuerrillaFrontEnd.Models
+@model WebGuerrillaFrontEnd.Models.GuerrillaAll
+@{
+	ViewBag.Title = "Ranking";
+	var guerrillas = (List<WebGuerrillaFrontEnd.Models.GuerrillaAll>)ViewData["guerrillas"];
+	var guerrillaActual = (GuerrillaCompleted)ViewData["guerrillaActual"];
 }
 
 
@@ -8,69 +12,63 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
+	<meta name="viewport" content="width=device-width" />
+	<title></title>
 </head>
 <body>
-    <h2>Ranking</h2>
-    <form asp-page="./Ranking" method="get">
-        <div class="form-actions no-color">
-            <p>
-                Buscar por nombre:
-                <input type="text" name="SearchString" />
-                <input type="submit" value="Buscar" class="btn btn-primary" /> |
-                <a asp-page="./Index">@Html.ActionLink("Volver a la lista general", "Ranking", "Home")</a>
-            </p>
-        </div>
-    </form>
+	<h2>Ranking</h2>
 
-    <div>
-        <table class="table table-hover table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Rank</th>
-                    <th scope="col">Guerrilla</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
+	@using (Html.BeginForm("Ranking", "Home", FormMethod.Get))
+	{
+		<div class="form-actions no-color">
+			<p>
+				<div class="col-md-3 col-md-offset-0">
+					Buscar por nombre:
+					@Html.TextBoxFor(g => g.GuerrillaName, new { Class = "form-control", Type = "text" })
+					Buscar por perfil:
+					@Html.TextBoxFor(g => g.Faction, new { Class = "form-control", Type = "text" })
+				</div>
+				<div class="col-md-8 col-md-offset-4">
+					<input type="submit" value="Buscar" class="btn btn-primary" /> |
+					<a asp-page="./Index">@Html.ActionLink("Volver a la lista general", "Ranking", "Home")</a>
+				</div>
+			</p>
+		</div>
+	}
 
-            <tr>
-                <td>1</td>
-                <td>Guerrilla1</td>
-                <td>@Html.ActionLink("Atacar", "Batalla", "Home")</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Guerrilla2</td>
-                <td>Atacar</td>
-            </tr>
-            @*<tbody>
-                    @foreach (var item in ViewData.Model)
+	<div>
+		<table class="table table-hover table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Rank</th>
+					<th scope="col">Guerrilla</th>
+					<th scope="col">Perfil</th>
+					<th scope="col">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var guerrilla in guerrillas)
+				{
+					if (guerrillaActual.Name != guerrilla.GuerrillaName)
+					{
+				<tr>
+						<td>@Html.DisplayFor(m => guerrilla.Rank)</td>
+						<td>@Html.DisplayFor(m => guerrilla.GuerrillaName)</td>
+						<td>@Html.DisplayFor(m => guerrilla.Faction)</td>
+						<td>@Html.ActionLink("Atacar", "Batalla", new { guerrillaEnemy = guerrilla.GuerrillaName, guerrillaSrc = guerrillaActual.Name })</td>
 
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.personName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.createdAt)
-                            </td>
-                            <td>
-                                <a asp-page="./Ver más">
-                                    @Html.ActionLink("Details", "Details", new { requestId = item.requestId })
+				</tr>
+					}
 
-                                </a>
-                            </td>
-                        </tr>
-                    }
+				}
 
+			</tbody>
 
-                </tbody>*@
-        </table>
+		</table>
 
-    </div>
-    <div NAME="buttonbar">
-        <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
-    </div>
+	</div>
+	<div NAME="buttonbar">
+		<INPUT class="bg-primary" TYPE="button" VALUE="Atrás" onClick="history.back()">
+	</div>
 </body>
 </html>

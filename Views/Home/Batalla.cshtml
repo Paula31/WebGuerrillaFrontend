@@ -1,18 +1,19 @@
 ﻿@{
     ViewBag.Title = "Batalla";
+    var guerillas = (WebGuerrillaFrontEnd.Models.Guerrillas)ViewData["guerrillas"];
 }
 
 
     <div class="row align-items-center">
-        <h2>Ganaste</h2> @*Hay que cambiarlo por lo que trae de la base *@
+        <h2>Ataque</h2> 
         <div style="padding: 10px; float: left; width: 45%; text-align: justify;">
             <div>
-                <h4>Recursos sobrevivientes</h4>
+                <h4>Mi Guerrilla</h4>
                 <table class="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Guerrilla</th>
-                            <th scope="col">Facción</th>
+                            <th scope="col">Perfil</th>
                             <th scope="col">Petróleo</th>
                             <th scope="col">Dinero</th>
                             <th scope="col">Personas</th>
@@ -20,11 +21,11 @@
                     </thead>
 
                     <tr>
-                        <td>Guerrilla1</td>
-                        <td>MEC</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
+                        <td>@guerillas.GuerrillasC[0].Name</td>
+						<td>@guerillas.GuerrillasC[0].Faction</td>
+						<td>@guerillas.GuerrillasC[0].Resources.Oil</td>
+						<td>@guerillas.GuerrillasC[0].Resources.Money</td>
+						<td>@guerillas.GuerrillasC[0].Resources.People</td>
 
                     </tr>
 
@@ -54,21 +55,23 @@
 
             </div>
             <div>
-                <h4>Unidades robadas</h4>
+                <h4>Resultados</h4>
                 <table class="table table-hover table-dark">
                     <thead>
-                        <tr>
-                            <th scope="col">Asaltos</th>
-                            <th scope="col">Ingenieros</th>
-                            <th scope="col">Tanques</th>
-                        </tr>
+						<tr>
+							<th scope="col">Asaltos</th>
+							<th scope="col">Ingenieros</th>
+							<th scope="col">Tanques</th>
+							<th scope="col">Trincheras</th>
+						</tr>
                     </thead>
 
-                    <tr>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                    </tr>
+					<tr>
+						<td>@guerillas.Results[0].Army.Assault</td>
+						<td>@guerillas.Results[0].Army.Engineer</td>
+						<td>@guerillas.Results[0].Army.Tank</td>
+						<td>@guerillas.Results[0].Buildings.Bunker</td>
+					</tr>
                 </table>
             </div>
         </div>
@@ -80,21 +83,21 @@
                     <thead>
                         <tr>
                             <th scope="col">Guerrilla</th>
-                            <th scope="col">Facción</th>
+                            <th scope="col">Perfil</th>
                             <th scope="col">Petróleo</th>
                             <th scope="col">Dinero</th>
                             <th scope="col">Personas</th>
                         </tr>
                     </thead>
 
-                    <tr>
-                        <td>Guerrilla1</td>
-                        <td>MEC</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
+					<tr>
+						<td>@guerillas.GuerrillasC[1].Name</td>
+						<td>@guerillas.GuerrillasC[1].Faction</td>
+						<td>@guerillas.GuerrillasC[1].Resources.Oil</td>
+						<td>@guerillas.GuerrillasC[1].Resources.Money</td>
+						<td>@guerillas.GuerrillasC[1].Resources.People</td>
 
-                    </tr>
+					</tr>
 
                     @*<tbody>
                         @foreach (var item in ViewData.Model)
@@ -121,21 +124,23 @@
                 </table>
             </div>
             <div>
-                <h4>Unidades perdidas</h4>
+                <h4>Resultados</h4>
                 <table class="table table-hover table-dark">
                     <thead>
-                        <tr>
-                            <th scope="col">Asaltos</th>
-                            <th scope="col">Ingenieros</th>
-                            <th scope="col">Tanques</th>
-                        </tr>
+						<tr>
+							<th scope="col">Asaltos</th>
+							<th scope="col">Ingenieros</th>
+							<th scope="col">Tanques</th>
+							<th scope="col">Trincheras</th>
+						</tr>
                     </thead>
 
-                    <tr>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                    </tr>
+					<tr>
+						<td>@guerillas.Results[1].Army.Assault</td>
+						<td>@guerillas.Results[1].Army.Engineer</td>
+						<td>@guerillas.Results[1].Army.Tank</td>
+						<td>@guerillas.Results[1].Buildings.Bunker</td>
+					</tr>
                 </table>
             </div>
         </div>

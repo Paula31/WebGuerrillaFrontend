@@ -119,7 +119,7 @@ namespace WebGuerrillaFrontEnd.Models
 			get { return rank; }
 			set
 			{
-				if (value < 0) throw new Exception("El rank en GuerrillaCompleted debe ser igual o mayor a.");
+				//if (value < 0) throw new Exception("El rank en GuerrillaCompleted debe ser igual o mayor a.");
 				rank = value;
 			}
 		}

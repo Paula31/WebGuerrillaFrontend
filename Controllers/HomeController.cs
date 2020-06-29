@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using WebGuerrillaFrontEnd.Models;
 
 namespace WebGuerrillaFrontEnd.Controllers
@@ -58,23 +59,94 @@ namespace WebGuerrillaFrontEnd.Controllers
 
         }
 
-        public ActionResult Batalla()
+        [HttpGet]
+        public async Task<ActionResult> Batalla()
         {
             ViewBag.Title = "Batalla";
 
-            return View();
-        }
+			try
+			{
+                string guerrillaEnemy = Request.QueryString["guerrillaEnemy"];
+                string guerrillaSrc = Request.QueryString["guerrillaSrc"];
 
+                string cadena = guerrillaEnemy+"?guerrillaSrc="+guerrillaSrc;
+
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(IPAdrress);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.PostAsync("/guerrilla/attack/"+cadena, null).Result;
+                var json = await response.Content.ReadAsStringAsync();
+				var guerrillas = JsonConvert.DeserializeObject<Guerrillas>(json);
+				ViewData["guerrillas"] = guerrillas;
+
+				return View();
+
+            }
+            catch
+			{
+                return RedirectToActionPermanent("Ranking");
+			}
+           
+
+        }
+        [HttpGet]
         public ActionResult Ajustes()
         {
             ViewBag.Title = "Ajustes";
+            ViewData["IPAdrress"] = IPAdrress;
 
             return View();
         }
 
-        public ActionResult Ranking()
+        [HttpPost]
+        public ActionResult Ajustes(FormCollection formCollection)
+        {
+            ViewBag.Title = "Ajustes";
+
+            IPAdrress = formCollection["txtIP"];
+            ViewData["IPAdrress"] = IPAdrress;
+            return RedirectToActionPermanent("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult> Ranking()
         {
             ViewBag.Title = "Ranking";
+
+            string cadena = "";
+
+            String name= Request.QueryString["GuerrillaName"];
+            String faction = Request.QueryString["Faction"];
+            if (Request.QueryString["GuerrillaName"] == null && Request.QueryString["Faction"] == null)
+            {
+                cadena = "";
+			}else
+            if (Request.QueryString["GuerrillaName"] == "" && Request.QueryString["Faction"] == "")
+            {
+                cadena = "";
+            }else
+            if (name == "")
+			{
+                cadena = "?faction="+faction.Trim();
+			}else
+			if (faction == "")
+			{
+                cadena = "?name="+name.Trim();
+			}else
+			if (name != "" && faction != "")
+			{
+                cadena = "?faction=" + faction.Trim() + "&name=" + name.Trim();
+			}
+
+
+            var httpClient = new HttpClient();
+			var json = await httpClient.GetStringAsync(IPAdrress + "/guerrilla"+ cadena);
+			var guerrillas = JsonConvert.DeserializeObject<List<GuerrillaAll>>(json);
+
+            ViewData["guerrillas"] = guerrillas;
+            ViewData["guerrillaActual"] = guerrilla;
+
 
             return View();
         }
