@@ -1,72 +1,80 @@
-﻿
+﻿@model WebGuerrillaFrontEnd.Models.GuerrillaCompleted
+
 @{
-    ViewBag.Title = "Perfil";
+	ViewBag.Title = "Perfil";
+	var guerrilla = (WebGuerrillaFrontEnd.Models.GuerrillaCompleted)ViewData["guerrilla"];
 }
 
 <div class="row align-items-center">
 
-    <div class="col-md-8 ">
-        <h2>Mi Perfil</h2>
+	<div class="col-md-8 ">
+		<h2>Perfil</h2>
 
-        
-        <div style="padding: 10px; float: left; width: 45%; text-align: justify;">
-            <form>
-                <h4>Compra de unidades</h4>
-                <div class="form-group">
-                    <label>Bunker</label>
-                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="bunker" value="" required />
-                </div>
-                <div class="form-group">
-                    <label>Unidades de Asalto</label>
-                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
-                </div>
-                <div class="form-group">
-                    <label>Trincheras</label>
-                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
-                </div>
-                <div class="form-group">
-                    <label>Tanques de Guerra</label>
-                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
-                </div>
-                <div class="form-group">
-                    <label>Ingenieros</label>
-                    <input class="form-control" type="number" min="0" pattern="^[0-9]+" name="asalto" value="" required />
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default">Comprar</button>
-                </div>
-                <div NAME="buttonbar">
-                    <INPUT class="bg-primary" TYPE="button" VALUE="Atrás" oConClick="history.back()">
-                </div>
+		<div style="padding: 10px; float: left; width: 45%; text-align: justify;">
+			<h3>@guerrilla.Name</h3>
+			<h4>Mis recursos</h4>
+			<table class="table table-hover table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Guerrilla</th>
+						<th scope="col">Perfil</th>
+						<th scope="col">Petróleo</th>
+						<th scope="col">Dinero</th>
+						<th scope="col">Personas</th>
+					</tr>
+				</thead>
 
-            </form>
-        </div>
+				<tr>
+					<td>@guerrilla.Name</td>
+					<td>@guerrilla.Faction</td>
+					<td>@guerrilla.Resources.Oil</td>
+					<td>@guerrilla.Resources.Money</td>
+					<td>@guerrilla.Resources.People</td>
+				</tr>
+			</table>
+			<div class="form-group">
+				<INPUT class="bg-primary" TYPE="button" VALUE="Atrás" oConClick="history.back()">
+			</div>
+		</div>
 
-        <div style="padding: 10px; float: right; width: 45%; text-align: justify;">
-            <h4>Mis recursos</h4>
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Guerrilla</th>
-                        <th scope="col">Facción</th>
-                        <th scope="col">Petróleo</th>
-                        <th scope="col">Dinero</th>
-                        <th scope="col">Personas</th>
-                    </tr>
-                </thead>
+		@using (Html.BeginForm("Perfil", "Home", FormMethod.Post, new { GuerrillaName = @guerrilla.Name }))
+		{
+			<div style="padding: 10px; float: right; width: 45%; text-align: justify;">
+				<form>
+					<h4>Compra de unidades</h4>
+					<div class="form-group">
+						<label>Unidades de Asalto</label>
+						<label>@guerrilla.Army.Assault</label>
+						@Html.TextBoxFor(g => g.Army.Assault, new { Class = "form-control", Min = "0", Pattern = "^[0-9]+", Required = "true", Type = "number" })
 
-                <tr>
-                    <td>Guerrilla1</td>
-                    <td>MEC</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>5</td>
-                </tr>
-            </table>
-        </div>
+					</div>
+					<div class="form-group">
+						<label>Ingenieros</label>
+						<label>@guerrilla.Army.Engineer</label>
+						@Html.TextBoxFor(g => g.Army.Engineer, new { Class = "form-control", Min = "0", Pattern = "^[0-9]+", Required = "true", Type = "number" })
 
-    </div>
-  
+					</div>
+					<div class="form-group">
+						<label>Tanques de Guerra</label>
+						<label>@guerrilla.Army.Tank</label>
+						@Html.TextBoxFor(g => g.Army.Tank, new { Class = "form-control", Min = "0", Pattern = "^[0-9]+", Required = "true", Type = "number" })
+
+					</div>
+					<div class="form-group">
+						<label>Trincheras</label>
+						<label>@guerrilla.Buildings.Bunker</label>
+						@Html.TextBoxFor(g => g.Buildings.Bunker, new { Class = "form-control", Min = "0", Pattern = "^[0-9]+", Required = "true", Type = "number" })
+
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">Comprar</button>
+					</div>
+				</form>
+
+			</div>
+		}
+	</div>
+
 </div>
 
 

@@ -1,39 +1,39 @@
-﻿<div class="row align-items-center">
+﻿@model WebGuerrillaFrontEnd.Models.Guerrilla
+<div class="row align-items-center">
 
-    <div class="col-md-8 ">
-        <h2>Bienvenidos (as)</h2>
+	<div class="col-md-8 ">
+		<h2>Bienvenidos (as)</h2>
+		@using (Html.BeginForm("Perfil", "Home", FormMethod.Get))
+		{
 
+			<form action="/Home/Login/" method="post">
+				<div class="form-group">
+					<label>Correo o usuario</label>
+					@Html.TextBoxFor(m => m.GuerrillaName, new { Class = "form-control", Required = "true"})
 
-        <form action="/Home/Login/" method="post">
-            <div class="form-group">
-                <label>Correo</label>
-                <input class="form-control" type="text" name="email" value="" required />
-            </div>
-            <div class="form-group">
-                <label>Contrase&ntilde;a</label>
-                <input class="form-control" type="password" name="pass" value="" required />
-            </div>
-            @{
-                if (!string.IsNullOrEmpty(ViewBag.Message))
-                {
-                    <div class="alert-danger col-md-4">
-                        @ViewBag.Message
-                    </div><br /><br />
-                }
-            }
-            <div class="form-group">
-                <button class="btn btn-default">Iniciar Sesi&oacute;n</button>
-            </div>
-            <div class="d-flex justify-content-center links">
-                @Html.ActionLink("Registrarse", "Registrarse", "Home")
-            </div>
+				</div>
+				
+				@{
+					if (!string.IsNullOrEmpty(ViewBag.Message))
+					{
+						<div class="alert-danger col-md-4">
+							@ViewBag.Message
+						</div><br /><br />
+					}
+				}
+			<div class="form-group">
+				<button class="btn btn-default">Iniciar Sesi&oacute;n</button>
+			</div>
+				<div class="d-flex justify-content-center links">
+					@Html.ActionLink("Registrarse", "Registrarse", "Home")
+				</div>
 
-        </form>
+			</form>
+		}
+	</div>
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
 
-    </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-
-    </div>
+	</div>
 </div>
